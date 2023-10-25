@@ -1,10 +1,24 @@
 package vista;
+import controlador.Controlador;
+import modelo.Articulo;
+import modelo.Datos;
+import modelo.Lista;
+
+import java.util.Scanner;
 
 public class GestionOS {
+
+	private Controlador controlador;
+	Scanner teclado = new Scanner(System.in);
+
+	public GestionOS() {
+		controlador = new Controlador();
+	}
+
 	public void inicio() {
 		
 		boolean salir = false;
-		String opcio;
+		String opcion;
 		
 		do {
 			
@@ -19,17 +33,17 @@ public class GestionOS {
 			System.out.println("9. Mostar pedidos pendientes");
 			System.out.println("10. Mostrar pedidos enviados" );
 			System.out.println("0. Salir" );
-			opcio = pedirOpcion();
-			switch (opcio) {
+			opcion = pedirOpcion();
+			switch (opcion) {
 			case "1":
-				añadirArticulo();
+				addArticulo();
 				break;
 				
 			case "2":
 				mostrarArticulos();
 				break;
 			case "3":
-				añadirClientes();
+				addCliente();
 				break;	
 			case "4":
 				mostrarClientes();
@@ -41,7 +55,7 @@ public class GestionOS {
 				mostrarClientesPremium();
 				break;	
 			case "7":
-				añadirPedido();
+				addPedido();
 				break;	
 			case "8":
 				eliminarPedido();
@@ -57,10 +71,11 @@ public class GestionOS {
 				break;	
 			}
 			
-		}while(!salir);
+		} while(!salir);
 		
 		
 	}
+
 
 	private void mostrarPedidosEnviados() {
 		// TODO Auto-generated method stub
@@ -77,7 +92,7 @@ public class GestionOS {
 		
 	}
 
-	private void añadirPedido() {
+	private void addPedido() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -97,24 +112,36 @@ public class GestionOS {
 		
 	}
 
-	private void añadirClientes() {
+	private void addCliente() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	private void mostrarArticulos() {
-		// TODO Auto-generated method stub
-		
+		controlador.mostrarArticulos();
+
 	}
 
-	private void añadirArticulo() {
-		// TODO Auto-generated method stub
-		
+	private void addArticulo() {
+		System.out.println("Código del artículo: ");
+		Integer codigo = teclado.nextInt();
+		System.out.println("Descripción: ");
+		String descripcion = teclado.next();
+		System.out.println("Precio: ");
+		float precio = teclado.nextFloat();
+		System.out.println("Gastos de envío: ");
+		float gastos = teclado.nextFloat();
+		System.out.println("Preparación: ");
+		Integer preparacion = teclado.nextInt();
+ 		controlador.addArticulo(codigo, descripcion, precio, gastos, preparacion);
 	}
 
 	private String pedirOpcion() {
-		// TODO Auto-generated method stub
-		return null;
+		String respuesta;
+		teclado = new Scanner(System.in);
+		System.out.print("¿Qué quieres hacer?");
+		respuesta = teclado.nextLine();
+		return respuesta;
 	}
 
 }

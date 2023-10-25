@@ -9,17 +9,17 @@ public class Lista<T> {
 		lista = new ArrayList<>();
 	}
 	
-	public int getSize () {
+	public int getSize() {
 		return 0;
 		//Código
 	}
-	
+
 	public void add(T t) {
-		//código
+		lista.add(t);
 	}
 	
-	public void borrar (T t) {
-		//código
+	public void borrar(T t) {
+		lista.add(t);
 	}
 	public T getAt(int position) {
 		return null;
@@ -32,8 +32,16 @@ public class Lista<T> {
 		return false;
 		//código
 	}
-	public ArrayList<T> getArrayList(){
-		ArrayList<T> arrlist = new ArrayList<>(lista);
-		return arrlist;
+
+	public ArrayList getArrayList() {
+		return lista;
 	}
+	public void printList(){
+		System.out.println("******* STOCK DE ARTÍCULOS  ********");
+		for (T t : this.lista) {
+			System.out.println(t);
+		}
+		System.out.println();
+	}
+
 }
