@@ -123,18 +123,6 @@ public class OnlineStore {
 
 	private void addCliente() {
 		// TODO Auto-generated method stub
-		System.out.println("Código del artículo: ");
-		int codigo = teclado.nextInt();
-		System.out.println("Descripción: ");
-		String descripcion = teclado.next();
-		System.out.println("Precio: ");
-		float precio = teclado.nextFloat();
-		System.out.println("Gastos de envío: ");
-		float gastos = teclado.nextFloat();
-		System.out.println("Preparación: ");
-		int preparacion = teclado.nextInt();
-		this.controlador.(codigo, descripcion, precio, gastos, preparacion);
-
 	}
 
 	private void mostrarArticulos() {
