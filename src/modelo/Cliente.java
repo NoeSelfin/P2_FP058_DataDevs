@@ -8,7 +8,7 @@ public abstract class Cliente {
 	
 	public abstract String tipoCliente();
 	public abstract float calcAnual();
-	public abstract float deseucntoEnv();
+	public abstract float descuentoEnv();
 	public Cliente(String nombre, String domicilio, String email, String nif) {
 		super();
 		this.nombre = nombre;

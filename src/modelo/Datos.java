@@ -18,6 +18,18 @@ public class Datos {
 		System.out.println(articulo.toString());
 	}
 
+
+	public void addPedido(Integer numeroPedido, Integer cantidadArticulos, Cliente cliente, Articulo articulo, Integer cantidad) {
+		Pedido pedido = new Pedido(numeroPedido, cantidadArticulos, cliente, articulo, cantidad);
+		listaPedidos.add(pedido);
+		System.out.println("***Pedido correctamente añadido!!***");
+		System.out.println(pedido.toString());
+	}
+
+	public void mostrarPedidos() {
+		listaPedidos.printList();
+	}
+
 	public void mostrarArticulos() {
 		listaArticulos.printList();
 	}
