@@ -4,8 +4,8 @@ public class Datos {
 	private ListaArticulos listaArticulos;
 	private ListaClientes listaClientes;
 	private ListaPedidos listaPedidos;
-	
-	public Datos () {
+
+	public Datos() {
 		listaArticulos = new ListaArticulos();
 		listaClientes = new ListaClientes();
 		listaPedidos = new ListaPedidos();
@@ -34,5 +34,13 @@ public class Datos {
 		listaArticulos.printList();
 	}
 
+	public void addCliente(Cliente cliente) {
+		listaClientes.add(cliente);
+		System.out.println("***Cliente correctamente añadido!!***");
+		System.out.println(cliente.toString());
+	}
 
+	public void mostrarClientes() {
+		listaClientes.printList();
+	}
 }
