@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class OnlineStore {
 
 	public static void main(String[] args) {
-		GestionOS gestion = new GestionOS();
+		OnlineStore gestion = new OnlineStore();
 		gestion.inicio();
 	}
 	private Controlador controlador;
@@ -97,6 +97,8 @@ public class OnlineStore {
 
 	private void addPedido() {
 		// TODO Auto-generated method stub
+
+
 
 	}
 
