@@ -1,17 +1,19 @@
 package onlineStore;
 import controlador.Controlador;
-import vista.GestionOS;
 
 import java.util.Scanner;
 
 public class OnlineStore {
 
+	private Controlador controlador;
+	Scanner teclado = new Scanner(System.in);
+
+
 	public static void main(String[] args) {
 		OnlineStore gestion = new OnlineStore();
 		gestion.inicio();
 	}
-	private Controlador controlador;
-	Scanner teclado = new Scanner(System.in);
+
 
 	public void GestionOS()
 	{
@@ -19,6 +21,8 @@ public class OnlineStore {
 	}
 
 	public void inicio() {
+
+		this.controlador = new Controlador();
 
 		boolean salir = false;
 		String opcion;
@@ -119,17 +123,8 @@ public class OnlineStore {
 
 	private void addCliente() {
 		// TODO Auto-generated method stub
-
-	}
-
-	private void mostrarArticulos() {
-		controlador.mostrarArticulos();
-
-	}
-
-	private void addArticulo() {
 		System.out.println("Código del artículo: ");
-		Integer codigo = teclado.nextInt();
+		int codigo = teclado.nextInt();
 		System.out.println("Descripción: ");
 		String descripcion = teclado.next();
 		System.out.println("Precio: ");
@@ -137,8 +132,28 @@ public class OnlineStore {
 		System.out.println("Gastos de envío: ");
 		float gastos = teclado.nextFloat();
 		System.out.println("Preparación: ");
-		Integer preparacion = teclado.nextInt();
-		controlador.addArticulo(codigo, descripcion, precio, gastos, preparacion);
+		int preparacion = teclado.nextInt();
+		this.controlador.(codigo, descripcion, precio, gastos, preparacion);
+
+	}
+
+	private void mostrarArticulos() {
+		this.controlador.mostrarArticulos();
+
+	}
+
+	private void addArticulo() {
+		System.out.println("Código del artículo: ");
+		int codigo = teclado.nextInt();
+		System.out.println("Descripción: ");
+		String descripcion = teclado.next();
+		System.out.println("Precio: ");
+		float precio = teclado.nextFloat();
+		System.out.println("Gastos de envío: ");
+		float gastos = teclado.nextFloat();
+		System.out.println("Preparación: ");
+		int preparacion = teclado.nextInt();
+		this.controlador.addArticulo(codigo, descripcion, precio, gastos, preparacion);
 	}
 
 	private String pedirOpcion() {
