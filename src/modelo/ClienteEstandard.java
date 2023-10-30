@@ -3,27 +3,27 @@ package modelo;
 public class ClienteEstandard extends Cliente{
 
 	public ClienteEstandard(String nombre, String domicilio, String email, String nif) {
-		super(nombre, domicilio, email, nif);
-		// TODO Auto-generated constructor stub
+		super(nombre, domicilio, email, nif, 1);
+
 	}
 
 	@Override
 	public String tipoCliente() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Cliente Estandar";
 	}
 
 	@Override
 	public float calcAnual() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 30;
 	}
 
 	@Override
-	public float deseucntoEnv() {
-		// TODO Auto-generated method stub
-		return 0;
+	public float descuentoEnv() {
+		return 25;
 	}
-	
 
+	@Override
+	public String toString() {
+		return "ClienteEstandard{} " + super.toString()+ ", coste="+ calcAnual()+ ", descuento=" + descuentoEnv();
+	}
 }

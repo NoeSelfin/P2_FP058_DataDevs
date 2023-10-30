@@ -4,11 +4,13 @@ import java.sql.Timestamp;
 
 public class Pedido {
 	private int numeroPedido;
+	private int cantidadArticulos;
+
 	private Cliente cliente;
 	private Articulo articulo;
 	private int cantidad;
 	private Timestamp fecha;
-	
+
 	public boolean pedidoEnviado() {
 		return false;
 	}
@@ -17,8 +19,9 @@ public class Pedido {
 		return 0;
 	}
 
-	public Pedido(int numeroPedido, Cliente cliente, Articulo articulo, int cantidad, Timestamp fecha) {
+	public Pedido(int numeroPedido, int cantidadArticulos, Cliente cliente, Articulo articulo, int cantidad) {
 		this.numeroPedido = numeroPedido;
+		this.cantidadArticulos = cantidadArticulos;
 		this.cliente = cliente;
 		this.articulo = articulo;
 		this.cantidad = cantidad;
@@ -31,6 +34,14 @@ public class Pedido {
 
 	public void setNumeroPedido(int numeroPedido) {
 		this.numeroPedido = numeroPedido;
+	}
+
+	public int getCantidadArticulos() {
+		return cantidadArticulos;
+	}
+
+	public void setCantidadArticulos(int cantidadArticulos) {
+		this.cantidadArticulos = cantidadArticulos;
 	}
 
 	public Cliente getCliente() {
@@ -67,11 +78,14 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido [numeroPedido=" + numeroPedido + ", cliente=" + cliente + ", articulo=" + articulo
-				+ ", cantidad=" + cantidad + ", fecha=" + fecha + "]";
+		return "Pedido{" +
+				"numeroPedido=" + numeroPedido +
+				", cantidadArticulos=" + cantidadArticulos +
+				", cliente=" + cliente +
+				", articulo=" + articulo +
+				", cantidad=" + cantidad +
+				", fecha=" + fecha +
+				'}';
 	}
-	
-	
-	
-
 }
+

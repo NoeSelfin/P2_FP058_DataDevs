@@ -36,12 +36,5 @@ public class Lista<T> {
 	public ArrayList getArrayList() {
 		return lista;
 	}
-	public void printList(){
-		System.out.println("******* STOCK DE ARTÍCULOS  ********");
-		for (T t : this.lista) {
-			System.out.println(t);
-		}
-		System.out.println();
-	}
 
 }

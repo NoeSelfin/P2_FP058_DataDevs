@@ -5,16 +5,20 @@ public abstract class Cliente {
 	private String domicilio;
 	private String email;
 	private String nif;
-	
+
+	private Integer tipoCliente;
+
+
 	public abstract String tipoCliente();
 	public abstract float calcAnual();
-	public abstract float deseucntoEnv();
-	public Cliente(String nombre, String domicilio, String email, String nif) {
+	public abstract float descuentoEnv();
+	public Cliente(String nombre, String domicilio, String email, String nif, Integer tipoCliente) {
 		super();
 		this.nombre = nombre;
 		this.domicilio = domicilio;
 		this.email = email;
 		this.nif = nif;
+		this.tipoCliente = tipoCliente;
 	}
 	public String getNombre() {
 		return nombre;
@@ -39,6 +43,13 @@ public abstract class Cliente {
 	}
 	public void setNif(String nif) {
 		this.nif = nif;
+	}
+
+	public Integer getTipoCliente() {
+		return tipoCliente;
+	}
+	public void setTipoCliente(Integer tipoCliente) {
+		this.tipoCliente = tipoCliente;
 	}
 	@Override
 	public String toString() {
