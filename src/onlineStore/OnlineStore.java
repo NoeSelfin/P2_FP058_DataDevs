@@ -7,6 +7,7 @@ import modelo.ClienteEstandard;
 import modelo.ClientePremium;
 import vista.GestionOS;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class OnlineStore {
@@ -126,22 +127,28 @@ public class OnlineStore {
 
 
 
-	private void addCliente() {
-		System.out.println("Nombre del cliente: ");
-		String nombre = teclado.next();
-		System.out.println("Domicilio del cliente: ");
-		String domicilio = teclado.next(); // Cambio nextLine() a next()
-		teclado.nextLine(); // Agrego esta línea para consumir el salto de línea pendiente
+	private void addCliente()  throws InputMismatchException {
+		try {
+			System.out.println("Nombre del cliente: ");
+			String nombre = teclado.next();
+			System.out.println("Domicilio del cliente: ");
+			String domicilio = teclado.next(); // Cambio nextLine() a next()
+			teclado.nextLine(); // Agrego esta línea para consumir el salto de línea pendiente
 
-		System.out.println("Email del cliente: ");
-		String email = teclado.next();
-		System.out.println("NIF del cliente: ");
-		String nif = teclado.next();
+			System.out.println("Email del cliente: ");
+			String email = teclado.next();
+			System.out.println("NIF del cliente: ");
+			String nif = teclado.next();
 
-		System.out.println("Tipo de cliente (Estándar/Premium): ");
-		String tipoCliente = teclado.next();
+			System.out.println("Tipo de cliente (Estándar/Premium): ");
+			String tipoCliente = teclado.next();
 
-		controlador.addCliente(nombre, domicilio, email, nif, tipoCliente);
+			controlador.addCliente(nombre, domicilio, email, nif, tipoCliente);
+		} catch (InputMismatchException e) {
+			System.out.println("Ha habido algún error en el tipo de dato introducido. Vuelve a intentarlo");
+			System.exit(0);
+		}
+
 	}
 
 	private void mostrarArticulos() {
@@ -149,18 +156,24 @@ public class OnlineStore {
 
 	}
 
-	private void addArticulo() {
-		System.out.println("Código del artículo: ");
-		Integer codigo = teclado.nextInt();
-		System.out.println("Descripción: ");
-		String descripcion = teclado.next();
-		System.out.println("Precio: ");
-		float precio = teclado.nextFloat();
-		System.out.println("Gastos de envío: ");
-		float gastos = teclado.nextFloat();
-		System.out.println("Preparación: ");
-		Integer preparacion = teclado.nextInt();
-		controlador.addArticulo(codigo, descripcion, precio, gastos, preparacion);
+	private void addArticulo() throws InputMismatchException {
+		try {
+			System.out.println("Código del artículo: ");
+			Integer codigo = teclado.nextInt();
+			System.out.println("Descripción: ");
+			String descripcion = teclado.next();
+			System.out.println("Precio: ");
+			float precio = teclado.nextFloat();
+			System.out.println("Gastos de envío: ");
+			float gastos = teclado.nextFloat();
+			System.out.println("Preparación: ");
+			Integer preparacion = teclado.nextInt();
+			controlador.addArticulo(codigo, descripcion, precio, gastos, preparacion);
+		} catch(InputMismatchException e) {
+			System.out.println("Ha habido algún error en el tipo de dato introducido. Vuelve a intentarlo");
+			System.exit(0);
+		}
+
 	}
 
 	private String pedirOpcion() {
