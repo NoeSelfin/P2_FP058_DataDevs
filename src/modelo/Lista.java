@@ -36,12 +36,5 @@ public class Lista<T> {
 	public ArrayList getArrayList() {
 		return lista;
 	}
-	public void printList(){
-		System.out.println("******* LISTADO  ********");
-		for (T t : this.lista) {
-			System.out.println(t);
-		}
-		System.out.println();
-	}
 
 }

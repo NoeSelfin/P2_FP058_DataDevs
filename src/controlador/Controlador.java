@@ -2,10 +2,8 @@ package controlador;
 
 import java.util.*;
 
-import modelo.Articulo;
-import modelo.Datos;
+import modelo.*;
 import vista.GestionOS;
-import modelo.Cliente;
 
 public class Controlador {
 	private Datos datos;
@@ -22,8 +20,9 @@ public class Controlador {
 		datos.mostrarArticulos();
 	}
 
-	public void addCliente(Cliente cliente) {
-		datos.addCliente(cliente);
+	public void addCliente(String nombre, String domicilio, String email, String nif, String tipoCliente) {
+
+		datos.addCliente(nombre, domicilio, email, nif, tipoCliente);
 	}
 
 	public void mostrarClientes() {

@@ -32,9 +32,22 @@ public class Datos {
 
 	public void mostrarArticulos() {
 		listaArticulos.printList();
+
 	}
 
-	public void addCliente(Cliente cliente) {
+	public void addCliente(String nombre, String domicilio, String email, String nif, String tipoCliente) {
+
+		Cliente cliente;
+
+		if (tipoCliente.equalsIgnoreCase("Estándar")) {
+			cliente = new ClienteEstandard(nombre, domicilio, email, nif);
+		} else if (tipoCliente.equalsIgnoreCase("Premium")) {
+			cliente = new ClientePremium(nombre, domicilio, email, nif);
+		} else {
+			System.out.println("Tipo de cliente no válido. Se creará como Estándar por defecto.");
+			cliente = new ClienteEstandard(nombre, domicilio, email, nif);
+		}
+
 		listaClientes.add(cliente);
 		System.out.println("***Cliente correctamente añadido!!***");
 		System.out.println(cliente.toString());
@@ -43,12 +56,12 @@ public class Datos {
 	public void mostrarClientes() {
 		listaClientes.printList();
 	}
-	public void mostrarClientesEstandar() {
+ 	public void mostrarClientesEstandar() {
 
-		listaClientes.printList();
+		listaClientes.printListEstandar();
 	}
 	public void mostrarClientesPremium() {
 
-		listaClientes.printList();
+		listaClientes.printListPremium();
 	}
 }

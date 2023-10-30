@@ -23,6 +23,7 @@ public class OnlineStore {
 		controlador = new Controlador();
 		boolean salir = false;
 		String opcion;
+		cargarDatosEjemplo();
 
 		do {
 
@@ -78,6 +79,17 @@ public class OnlineStore {
 
 	}
 
+	public void cargarDatosEjemplo() {
+		controlador.addArticulo(111, "mesa", 40.5F, 10.5F, 5);
+		controlador.addArticulo(222, "silla", 25.5F, 5.5F, 2);
+		controlador.addArticulo(333, "armario", 115.5F, 25.5F, 15);
+		controlador.addCliente("Ana", "C/Estevez 1", "ana@gmail.com", "44488765J", "Estándar");
+		controlador.addCliente("Sofía", "Plaça Catalunya 2", "sofia@gmail.com", "78653325N", "Estándar");
+		controlador.addCliente("Miguel", "Passeig de Gracia 2", "miguel@gmail.com", "6667895T", "Premium");
+		controlador.addCliente("Carlos", "C/Verdi 7", "carlos@gmail.com", "17894565R", "Premium");
+		controlador.addCliente("Carlos", "C/Verdi 7", "carlos@gmail.com", "17894565R", "Premium");
+
+	}
 	private void mostrarPedidosEnviados() {
 		// TODO Auto-generated method stub
 
@@ -129,18 +141,7 @@ public class OnlineStore {
 		System.out.println("Tipo de cliente (Estándar/Premium): ");
 		String tipoCliente = teclado.next();
 
-		Cliente cliente;
-
-		if (tipoCliente.equalsIgnoreCase("Estándar")) {
-			cliente = new ClienteEstandard(nombre, domicilio, email, nif);
-		} else if (tipoCliente.equalsIgnoreCase("Premium")) {
-			cliente = new ClientePremium(nombre, domicilio, email, nif);
-		} else {
-			System.out.println("Tipo de cliente no válido. Se creará como Estándar por defecto.");
-			cliente = new ClienteEstandard(nombre, domicilio, email, nif);
-		}
-
-		controlador.addCliente(cliente);
+		controlador.addCliente(nombre, domicilio, email, nif, tipoCliente);
 	}
 
 	private void mostrarArticulos() {
