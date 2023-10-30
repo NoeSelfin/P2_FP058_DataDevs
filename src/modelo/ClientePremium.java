@@ -4,25 +4,26 @@ public class ClientePremium extends Cliente{
 
 	public ClientePremium(String nombre, String domicilio, String email, String nif) {
 		super(nombre, domicilio, email, nif);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override
 	public String tipoCliente() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Cliente Premium";
 	}
 
 	@Override
 	public float calcAnual() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 40;
 	}
 
 	@Override
 	public float descuentoEnv() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 20;
 	}
 
+	@Override
+	public String toString() {
+		return "ClientePremium{} " + super.toString()+", coste="+ calcAnual()+ ", descuento=" + descuentoEnv();
+	}
 }

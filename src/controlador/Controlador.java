@@ -29,4 +29,14 @@ public class Controlador {
 	public void mostrarClientes() {
 		datos.mostrarClientes();
 	}
+
+	public void mostrarClientesEstandar() {
+
+		datos.mostrarClientesEstandar();
+	}
+
+	public void mostrarClientesPremium() {
+		datos.mostrarClientesPremium();
+	}
 }
+

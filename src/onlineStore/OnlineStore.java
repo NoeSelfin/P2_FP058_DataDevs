@@ -51,7 +51,6 @@ public class OnlineStore {
 					break;
 				case "4":
 					mostrarClientes();
-					break;
 				case "5":
 					mostrarClientesEstandar();
 					break;
@@ -99,20 +98,21 @@ public class OnlineStore {
 
 	}
 
-	private void mostrarClientesPremium() {
-		// TODO Auto-generated method stub
+	private void mostrarClientesEstandar() {
+		controlador.mostrarClientesEstandar();
 
 	}
-
-	private void mostrarClientesEstandar() {
-		// TODO Auto-generated method stub
+	private void mostrarClientesPremium() {
+		controlador.mostrarClientesPremium();
 
 	}
 
 	private void mostrarClientes() {
 		controlador.mostrarClientes();
-
 	}
+
+
+
 
 	private void addCliente() {
 		System.out.println("Nombre del cliente: ");

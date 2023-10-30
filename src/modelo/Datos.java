@@ -43,4 +43,12 @@ public class Datos {
 	public void mostrarClientes() {
 		listaClientes.printList();
 	}
+	public void mostrarClientesEstandar() {
+
+		listaClientes.printList();
+	}
+	public void mostrarClientesPremium() {
+
+		listaClientes.printList();
+	}
 }
