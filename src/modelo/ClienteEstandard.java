@@ -20,7 +20,7 @@ public class ClienteEstandard extends Cliente{
 	}
 
 	@Override
-	public float deseucntoEnv() {
+	public float descuentoEnv() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -37,7 +37,7 @@ public class Lista<T> {
 		return lista;
 	}
 	public void printList(){
-		System.out.println("******* STOCK DE ARTÍCULOS  ********");
+		System.out.println("******* LISTADO  ********");
 		for (T t : this.lista) {
 			System.out.println(t);
 		}
