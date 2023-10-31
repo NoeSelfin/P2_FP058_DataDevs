@@ -31,6 +31,7 @@ public class Datos {
 		listaPedidos.printList();
 	}
 
+
 	public void mostrarArticulos() {
 		listaArticulos.printList();
 
@@ -66,9 +67,5 @@ public class Datos {
 		listaClientes.printListPremium();
 	}
 
-	public void eliminarPedido(int numeroPedido)
-	{
-		listaPedidos.eliminarPedido (numeroPedido);
-		System.out.println("***Pedido correctamente eliminado!!***");
-	}
+
 }

@@ -1,12 +1,9 @@
 package controlador;
 
-import java.util.*;
-
 import modelo.*;
-import vista.GestionOS;
 
 public class Controlador {
-	private Datos datos;
+	public Datos datos;
 
 	public Controlador()
 	{
@@ -43,19 +40,25 @@ public class Controlador {
 		datos.mostrarClientesPremium();
 	}
 
-	public void addPedido(int numeroPedido, int cantidadArticulos, Cliente cliente, Articulo articulo, int cantidad)
+	public boolean addPedido(int numeroPedido, int cantidadArticulos, Cliente cliente, Articulo articulo, int cantidad)
 	{
 		datos.addPedido(numeroPedido, cantidadArticulos, cliente, articulo, cantidad);
+		return false;
 	}
 
 	public void mostrarPedidos()
 	{
 		datos.mostrarPedidos();
 	}
+
 	public void eliminarPedido(int numeroPedido)
 	{
 		datos.eliminarPedido(numeroPedido);
 	}
 
+	public boolean existePedido(int numPedido)
+	{
+        return false;
+    }
 }
 
