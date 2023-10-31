@@ -1,6 +1,6 @@
 package modelo;
 
-public class ListaPedidos extends Lista<Pedido>{
+public class ListaPedidos extends Lista<Pedido> {
 
 	public ListaPedidos() {
 		super();
@@ -30,15 +30,29 @@ public class ListaPedidos extends Lista<Pedido>{
 		return super.getSize();
 	}
 
-	public void printList(){
+	public void printList() {
 		System.out.println("******* PEDIDOS  ********");
 		for (Pedido pedido : this.lista) {
 			System.out.println(pedido);
 		}
 		System.out.println();
 	}
-    @Override
-    public String toString() {
-        return "Lista de Pedidos: " + this.lista;
-    }
+
+	@Override
+	public String toString() {
+		return "Lista de Pedidos: " + this.lista;
+	}
+
+	public void eliminarPedido(int numeroPedido) {
+		for (Pedido pedido : this.lista) {
+			if (pedido.getNumeroPedido() == numeroPedido) {
+				this.lista.remove(pedido);
+				System.out.println("Pedido eliminado correctamente");
+				return;
+			}
+		}
+		System.out.println("No se ha encontrado el pedido");
+	}
+
+
 }

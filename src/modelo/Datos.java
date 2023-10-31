@@ -26,7 +26,8 @@ public class Datos {
 		System.out.println(pedido.toString());
 	}
 
-	public void mostrarPedidos() {
+	public void mostrarPedidos()
+	{
 		listaPedidos.printList();
 	}
 
@@ -63,5 +64,11 @@ public class Datos {
 	public void mostrarClientesPremium() {
 
 		listaClientes.printListPremium();
+	}
+
+	public void eliminarPedido(int numeroPedido)
+	{
+		listaPedidos.eliminarPedido (numeroPedido);
+		System.out.println("***Pedido correctamente eliminado!!***");
 	}
 }
