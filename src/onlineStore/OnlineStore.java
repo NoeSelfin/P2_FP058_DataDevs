@@ -1,13 +1,16 @@
 package onlineStore;
 
 import controlador.Controlador;
+import java.lang.*;
 
+import modelo.Articulo;
 import modelo.Cliente;
 import modelo.ClienteEstandard;
 import modelo.ClientePremium;
 import vista.GestionOS;
 
-import java.util.InputMismatchException;
+import java.time.*;
+import java.util.*;
 import java.util.Scanner;
 
 public class OnlineStore {
@@ -106,10 +109,80 @@ public class OnlineStore {
 
 	}
 
-	private void addPedido() {
+	private void addPedido () {
 		// TODO Auto-generated method stub
+		int numClientes = 0;
+		int numArticulos = 0;
+		Cliente clientes = null;
+		Articulo articulos = null;
+		int unidades = 0;
+		System.out.println("Numero de pedido: ");
+		int numPedido = Integer.parseInt(teclado.nextLine());
+		if (controlador.existePedido(numPedido)) {
+			System.out.println("Ya existe un pedido con ese codigo");
+			controlador.addPedido(numPedido, numArticulos, clientes, articulos, unidades);
+		} else {
+			System.out.println("Unidades: ");
+			int numArticulosPedido = Integer.parseInt(teclado.nextLine()) ;
 
+			unidades = numArticulosPedido;
+
+			do{
+				numArticulosPedido = Integer.parseInt(teclado.nextLine());
+				try{
+
+					if (numArticulosPedido < 0) {
+						throw new Exceptions("El numero de unidades no puede ser negativo");
+					} else if (numArticulosPedido > 10) {
+						throw new Exceptions("El numero de unidades no puede ser mayor de 10");
+					} else {
+						System.out.println("El numero de unidades ha sido aceptado");
+						unidades = numArticulosPedido;}
+
+				} catch (Exceptions e) {
+					System.out.println("Ha ocurrido un error: ");
+				}
+
+            } while(unidades);
+
+			System.out.println("Escoge el cliente del pedido.");
+			System.out.println("");
+			// Aqui llamaremos al controlador para que nos devuelva la lista de clientes y
+			// listarlos
+			for (int i = 0; i < controlador.datos.getClientes().getDato().size(); i++) {
+				System.out.println(i + 1 + ". " + controlador.datos.getClientes().getDato().get(i).getNombre() + "\n");
+				numClientes += String.valueOf(i + 1) + ",";
+			}
+
+			System.out.println("");
+			do {
+				System.out.println("Elige una opci�n (" + numClientes.substring(1) + "): ");
+				clientes = teclado.nextLine();
+			} while (!numClientes.contains(clientes));
+
+			System.out.println("Escoge el articulo del pedido.");
+			System.out.println("----------------------------------");
+			// Aqui llamaremos al controlador para que nos devuelva la lista de clientes y
+			// listarlos
+			for (int i = 0; i < controlador.datos.getArticulos().getDato().size(); i++) {
+				System.out.println(i + 1 + ". " + controlador.datos.getArticulos().getDato().get(i).getDescripcion() + "\n");
+				numArticulos += String.valueOf(i + 1) + ",";
+			}
+
+			System.out.println("----------------------------------");
+			do {
+				System.out.println("Elige una opci�n (" + numArticulos.substring(1) + "): ");
+				articulos = teclado.nextLine();
+			} while (!numArticulos.contains(clientes));
+
+			System.out.println(controlador.addPedido(numPedido, numArticulos, clientes, articulos, unidades));
+
+		}
 	}
+
+	private void mostrarPedidos() {
+		controlador.mostrarPedidos();
+}
 
 	private void mostrarClientesEstandar() {
 		controlador.mostrarClientesEstandar();

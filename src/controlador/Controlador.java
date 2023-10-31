@@ -52,10 +52,15 @@ public class Controlador {
 	{
 		datos.mostrarPedidos();
 	}
+
 	public void eliminarPedido(int numeroPedido)
 	{
 		datos.eliminarPedido(numeroPedido);
 	}
 
+	public boolean existePedido(int numPedido)
+	{
+        return false;
+    }
 }
 
