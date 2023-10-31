@@ -30,6 +30,11 @@ public class Datos {
 	{
 		listaPedidos.printList();
 	}
+	public void eliminarPedido(int numeroPedido)
+	{
+		listaPedidos.eliminarPedido (numeroPedido);
+		System.out.println("***Pedido correctamente eliminado!!***");
+	}
 
 
 	public void mostrarArticulos() {
