@@ -40,9 +40,9 @@ public class Controlador {
 		datos.mostrarClientesPremium();
 	}
 
-	public void addPedido(int idPedido, Integer indexCliente, Integer idArticulo, int cantidad)
+	public void addPedido(int idPedido, Integer indexCliente, Integer idArticulo, int cantidad, String fechaHoraPedido)
 	{
-		datos.addPedido(idPedido, indexCliente, idArticulo, cantidad);
+		datos.addPedido(idPedido, indexCliente, idArticulo, cantidad, fechaHoraPedido);
 
 	}
 
@@ -60,5 +60,21 @@ public class Controlador {
 	{
         return false;
     }
+
+	public void mostrarPedidosEnviados() {
+		datos.mostrarPedidosEnviados();
+	}
+
+	public void mostrarPedidosEnviados(Integer indexCliente) {
+		datos.mostrarPedidosEnviados(indexCliente);
+	}
+
+	public void mostrarPedidosPendientes() {
+		datos.mostrarPedidosPendientes();
+	}
+
+	public void mostrarPedidosPendientes(Integer indexCliente) {
+		datos.mostrarPedidosPendientes(indexCliente);
+	}
 }
 

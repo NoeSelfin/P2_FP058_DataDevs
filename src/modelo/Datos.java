@@ -19,10 +19,10 @@ public class Datos {
 	}
 
 
-	public void addPedido(Integer idPedido, Integer indexCliente, Integer indexArticulo, Integer cantidad) {
+	public void addPedido(Integer idPedido, Integer indexCliente, Integer indexArticulo, Integer cantidad, String fechaHoraPedido) {
 		Articulo articulo = listaArticulos.getAt(indexArticulo -1 );
 		Cliente cliente = listaClientes.getAt(indexCliente -1 );
-		Pedido pedido = new Pedido(idPedido, cliente, articulo, cantidad);
+		Pedido pedido = new Pedido(idPedido, cliente, articulo, cantidad, fechaHoraPedido);
 		listaPedidos.add(pedido);
 		System.out.println("***Pedido correctamente añadido!!***");
 		System.out.println(pedido.toString());
@@ -46,8 +46,7 @@ public class Datos {
 	}
 	public void eliminarPedido(int numeroPedido)
 	{
-		listaPedidos.eliminarPedido (numeroPedido);
-
+		listaPedidos.eliminarPedido(numeroPedido);
 		mostrarPedidos();
 	}
 
@@ -83,9 +82,23 @@ public class Datos {
 		listaClientes.printListEstandar();
 	}
 	public void mostrarClientesPremium() {
-
 		listaClientes.printListPremium();
 	}
 
+	public void mostrarPedidosEnviados() {
+		listaPedidos.mostrarPedidosEnviados();
+	}
 
+	public void mostrarPedidosEnviados(Integer indexCliente) {
+		Cliente clienteFound = listaClientes.getAt(indexCliente-1);
+		listaPedidos.mostrarPedidosEnviados(clienteFound);
+	}
+	public void mostrarPedidosPendientes() {
+		listaPedidos.mostrarPedidosPendientes();
+	}
+
+	public void mostrarPedidosPendientes(Integer indexCliente) {
+		Cliente clienteFound = listaClientes.getAt(indexCliente-1);
+		listaPedidos.mostrarPedidosPendientes(clienteFound);
+	}
 }

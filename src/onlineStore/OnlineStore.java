@@ -6,6 +6,8 @@ import java.lang.*;
 import modelo.Articulo;
 import modelo.Cliente;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.Scanner;
 
@@ -81,21 +83,44 @@ public class OnlineStore {
 	}
 
 	public void cargarDatosEjemplo() {
-		controlador.addArticulo(111, "mesa", 40.5F, 10.5F, 5);
-		controlador.addArticulo(222, "silla", 25.5F, 5.5F, 2);
-		controlador.addArticulo(333, "armario", 115.5F, 25.5F, 15);
+		controlador.addArticulo(111, "mesa", 40.5F, 10.5F, 60);
+		controlador.addArticulo(222, "silla", 25.5F, 5.5F, 250);
+		controlador.addArticulo(333, "armario", 115.5F, 25.5F, 600);
 		controlador.addCliente("Ana", "C/Estevez 1", "ana@gmail.com", "44488765J", "Estándar");
 		controlador.addCliente("Sofía", "Plaça Catalunya 2", "sofia@gmail.com", "78653325N", "Estándar");
 		controlador.addCliente("Miguel", "Passeig de Gracia 2", "miguel@gmail.com", "6667895T", "Premium");
 		controlador.addCliente("Carlos", "C/Verdi 7", "carlos@gmail.com", "17894565R", "Premium");
+		controlador.addPedido(56401,1, 1, 2, "2023-11-01 21:15");
+		controlador.addPedido(97415,3, 2, 4, "2023-10-28 11:30");
 	}
 
 	private void mostrarPedidosEnviados() {
-		// TODO Auto-generated method stub
+		System.out.println("¿Quieres filtrar por cliente? Sí/No");
+		String bool = teclado.next();
+		if (bool.equalsIgnoreCase("No")) {
+			controlador.mostrarPedidosEnviados();
+		} else {
+			System.out.println("***** Escoge un cliente *****");
+			controlador.mostrarClientes();
+			System.out.println("Ingresa el número del cliente: ");
+			Integer indexCliente = teclado.nextInt();
+			controlador.mostrarPedidosEnviados(indexCliente);
+		}
 	}
 
 	private void mostrarPedidosPendientes() {
-		// TODO Auto-generated method stub
+		System.out.println("¿Quieres filtrar por cliente? Sí/No");
+		String bool = teclado.next();
+		if (bool.equalsIgnoreCase("No")) {
+ 			controlador.mostrarPedidosPendientes();
+		} else {
+			System.out.println("***** Escoge un cliente *****");
+			controlador.mostrarClientes();
+			System.out.println("Ingresa el número del cliente: ");
+			Integer indexCliente = teclado.nextInt();
+			controlador.mostrarPedidosPendientes(indexCliente);
+
+		}
 	}
 
 	private void eliminarPedido() throws InputMismatchException {
@@ -145,7 +170,7 @@ public class OnlineStore {
 				System.out.println(numPedido);
 				System.out.println(idArticulo);
 				System.out.println(unidades);
-				controlador.addPedido(numPedido, indexCliente, idArticulo, unidades);
+				controlador.addPedido(numPedido, indexCliente, idArticulo, unidades, "2023-11-01 20:30");
 			}
 		} catch (InputMismatchException e) {
 			System.out.println("Ha habido algún error en el tipo de dato introducido. Vuelve a intentarlo");
@@ -226,4 +251,5 @@ public class OnlineStore {
 		respuesta = teclado.nextLine();
 		return respuesta;
 	}
+
 }

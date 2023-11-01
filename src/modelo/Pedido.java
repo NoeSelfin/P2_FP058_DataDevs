@@ -1,5 +1,6 @@
 package modelo;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class Pedido {
@@ -7,7 +8,7 @@ public class Pedido {
 	private Cliente cliente;
 	private Articulo articulo;
 	private int cantidad;
-	private Date fecha;
+	private LocalDateTime fecha;
 
 	public boolean pedidoEnviado() {
 		return false;
@@ -23,12 +24,12 @@ public class Pedido {
 		return (pvp * cantidad) + costeEnvio;
 	}
 
-	public Pedido(int idPedido, Cliente cliente, Articulo articulo, int cantidad) {
+	public Pedido(int idPedido, Cliente cliente, Articulo articulo, int cantidad, String fechaHoraPedido) {
 		this.idPedido = idPedido;
 		this.cliente = cliente;
 		this.articulo = articulo;
 		this.cantidad = cantidad;
-		this.setFecha();
+		this.fecha = parseFecha(fechaHoraPedido);
 	}
 
 	public int getNumeroPedido() {
@@ -63,13 +64,14 @@ public class Pedido {
 		this.cantidad = cantidad;
 	}
 
-	public Date getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 
-	public void setFecha( ) {
-		Date date = new Date();
-		this.fecha = date;
+	private LocalDateTime parseFecha(String fechaToParse) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		LocalDateTime dateTime = LocalDateTime.parse(fechaToParse, formatter);
+		return dateTime;
 	}
 
 	@Override
