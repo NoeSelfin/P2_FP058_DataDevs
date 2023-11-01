@@ -5,7 +5,7 @@ public class ListaArticulos  extends Lista<Articulo>{
     public void printList(){
         System.out.println("******* LISTADO DE ARTÍCULOS  ********");
         for (Articulo articulo : this.lista) {
-            System.out.println("Artículo con índice " + this.lista.indexOf(articulo) + ": " + articulo);
+            System.out.println(this.lista.indexOf(articulo)+1 + ": " + articulo);
         }
         System.out.println();
     }

@@ -33,7 +33,7 @@ public class ListaPedidos extends Lista<Pedido> {
 	public void printList() {
 		System.out.println("******* PEDIDOS  ********");
 		for (Pedido pedido : this.lista) {
-			System.out.println("Pedido con id " + pedido.getNumeroPedido() + ": " + pedido);
+			System.out.println(this.lista.indexOf(pedido)+1 + ": " + pedido);
 		}
 		System.out.println();
 	}
