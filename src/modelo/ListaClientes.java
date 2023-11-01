@@ -1,15 +1,15 @@
-    package modelo;
+package modelo;
 
-public class ListaClientes extends Lista<Cliente>{
+public class ListaClientes extends Lista<Cliente> {
 
-    public void printList(){
+    public void printList() {
         System.out.println("******* LISTADO DE CLIENTES (ESTÁNDAR Y PREMIUM)  ********");
         for (Cliente cliente : this.lista) {
-            System.out.println(this.lista.indexOf(cliente)+1 + ": " + cliente);
+            System.out.println(this.lista.indexOf(cliente) + 1 + ": " + cliente);
         }
     }
 
-    public void printListEstandar(){
+    public void printListEstandar() {
         System.out.println("******* LISTADO DE CLIENTES (ESTÁNDAR)  ********");
         for (Cliente cliente : this.lista) {
             if (cliente.getTipoCliente() == 1) {
@@ -18,7 +18,7 @@ public class ListaClientes extends Lista<Cliente>{
         }
     }
 
-    public void printListPremium(){
+    public void printListPremium() {
         System.out.println("******* LISTADO DE CLIENTES (PREMIUM)  ********");
         for (Cliente cliente : this.lista) {
             if (cliente.getTipoCliente() == 2) {

@@ -52,6 +52,7 @@ public class OnlineStore {
 					break;
 				case "4":
 					mostrarClientes();
+					break;
 				case "5":
 					mostrarClientesEstandar();
 					break;
@@ -88,6 +89,7 @@ public class OnlineStore {
 		controlador.addCliente("Miguel", "Passeig de Gracia 2", "miguel@gmail.com", "6667895T", "Premium");
 		controlador.addCliente("Carlos", "C/Verdi 7", "carlos@gmail.com", "17894565R", "Premium");
 	}
+
 	private void mostrarPedidosEnviados() {
 		// TODO Auto-generated method stub
 	}
@@ -118,34 +120,33 @@ public class OnlineStore {
 		int idArticulo = 0;
 		int unidades = 0;
 		try {
-		System.out.println("Numero de pedido: ");
-		int numPedido = Integer.parseInt(teclado.nextLine());
+			System.out.println("Numero de pedido: ");
+			int numPedido = Integer.parseInt(teclado.nextLine());
 
+			if (controlador.existePedido(numPedido)) {
+				System.out.println("Ya existe un pedido con ese codigo");
+			} else {
+				System.out.println("Escoge el cliente del pedido.");
+				System.out.println("----------------------------------");
+				System.out.println("");
+				controlador.mostrarClientes();
+				System.out.println("");
+				System.out.println("Ingresa el número del cliente: ");
+				indexCliente = teclado.nextInt();
 
-		if (controlador.existePedido(numPedido)) {
-			System.out.println("Ya existe un pedido con ese codigo");
-		} else {
-			System.out.println("Escoge el cliente del pedido.");
-			System.out.println("----------------------------------");
-			System.out.println("");
-			controlador.mostrarClientes();
-			System.out.println("");
-			System.out.println("Ingresa el número del cliente: ");
-			indexCliente = teclado.nextInt();
-
-			System.out.println("Escoge el articulo del pedido.");
-			System.out.println("----------------------------------");
-			controlador.mostrarArticulos();
-			System.out.println("----------------------------------");
-			System.out.println("Ingresa el número del articulo: ");
-			idArticulo = teclado.nextInt();
-			System.out.println("Ingresa el número de unidades del artículo: ");
-			unidades = teclado.nextInt();
-			System.out.println(numPedido);
-			System.out.println(idArticulo);
-			System.out.println(unidades);
-			controlador.addPedido(numPedido, indexCliente, idArticulo, unidades);
-		}
+				System.out.println("Escoge el articulo del pedido.");
+				System.out.println("----------------------------------");
+				controlador.mostrarArticulos();
+				System.out.println("----------------------------------");
+				System.out.println("Ingresa el número del articulo: ");
+				idArticulo = teclado.nextInt();
+				System.out.println("Ingresa el número de unidades del artículo: ");
+				unidades = teclado.nextInt();
+				System.out.println(numPedido);
+				System.out.println(idArticulo);
+				System.out.println(unidades);
+				controlador.addPedido(numPedido, indexCliente, idArticulo, unidades);
+			}
 		} catch (InputMismatchException e) {
 			System.out.println("Ha habido algún error en el tipo de dato introducido. Vuelve a intentarlo");
 			System.exit(0);
@@ -154,12 +155,13 @@ public class OnlineStore {
 
 	private void mostrarPedidos() {
 		controlador.mostrarPedidos();
-}
+	}
 
 	private void mostrarClientesEstandar() {
 		controlador.mostrarClientesEstandar();
 
 	}
+
 	private void mostrarClientesPremium() {
 		controlador.mostrarClientesPremium();
 
@@ -210,7 +212,7 @@ public class OnlineStore {
 			System.out.println("Preparación: ");
 			Integer preparacion = teclado.nextInt();
 			controlador.addArticulo(codigo, descripcion, precio, gastos, preparacion);
-		} catch(InputMismatchException e) {
+		} catch (InputMismatchException e) {
 			System.out.println("Ha habido algún error en el tipo de dato introducido. Vuelve a intentarlo");
 			System.exit(0);
 		}
