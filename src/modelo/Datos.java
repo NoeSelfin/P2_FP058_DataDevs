@@ -20,8 +20,8 @@ public class Datos {
 
 
 	public void addPedido(Integer idPedido, Integer indexCliente, Integer indexArticulo, Integer cantidad) {
-		Articulo articulo = listaArticulos.getAt(indexArticulo);
-		Cliente cliente = listaClientes.getAt(indexCliente);
+		Articulo articulo = listaArticulos.getAt(indexArticulo -1 );
+		Cliente cliente = listaClientes.getAt(indexCliente -1 );
 		Pedido pedido = new Pedido(idPedido, cliente, articulo, cantidad);
 		listaPedidos.add(pedido);
 		System.out.println("***Pedido correctamente añadido!!***");

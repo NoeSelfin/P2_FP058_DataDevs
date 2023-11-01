@@ -87,8 +87,6 @@ public class OnlineStore {
 		controlador.addCliente("Sofía", "Plaça Catalunya 2", "sofia@gmail.com", "78653325N", "Estándar");
 		controlador.addCliente("Miguel", "Passeig de Gracia 2", "miguel@gmail.com", "6667895T", "Premium");
 		controlador.addCliente("Carlos", "C/Verdi 7", "carlos@gmail.com", "17894565R", "Premium");
-		controlador.addCliente("Carlos", "C/Verdi 7", "carlos@gmail.com", "17894565R", "Premium");
-
 	}
 	private void mostrarPedidosEnviados() {
 		// TODO Auto-generated method stub
@@ -132,14 +130,14 @@ public class OnlineStore {
 			System.out.println("");
 			controlador.mostrarClientes();
 			System.out.println("");
-			System.out.println("Elige una opcion, ingresa el índice del cliente: ");
+			System.out.println("Ingresa el número del cliente: ");
 			indexCliente = teclado.nextInt();
 
 			System.out.println("Escoge el articulo del pedido.");
 			System.out.println("----------------------------------");
 			controlador.mostrarArticulos();
 			System.out.println("----------------------------------");
-			System.out.println("Elige una opcion, ingresa el índice del articulo: ");
+			System.out.println("Ingresa el número del articulo: ");
 			idArticulo = teclado.nextInt();
 			System.out.println("Ingresa el número de unidades del artículo: ");
 			unidades = teclado.nextInt();
