@@ -14,7 +14,7 @@ public class ClientePremium extends Cliente{
 
 	@Override
 	public float calcAnual() {
-		return 40;
+		return 30;
 	}
 
 	@Override
@@ -24,6 +24,6 @@ public class ClientePremium extends Cliente{
 
 	@Override
 	public String toString() {
-		return "ClientePremium{} " + super.toString()+", coste="+ calcAnual()+ ", descuento=" + descuentoEnv();
+		return "ClientePremium{} " + super.toString()+", cuota anual="+ calcAnual()+ ", descuento gastos envío=" + descuentoEnv();
 	}
 }

@@ -1,47 +1,42 @@
 package modelo;
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 public class Pedido {
-	private int numeroPedido;
-	private int cantidadArticulos;
-
+	private int idPedido;
 	private Cliente cliente;
 	private Articulo articulo;
 	private int cantidad;
-	private Timestamp fecha;
+	private Date fecha;
 
 	public boolean pedidoEnviado() {
 		return false;
 	}
 
 	public float precioEnvio() {
-		return 0;
+		Float pvp = articulo.getPvp();
+		Float costeEnvio = articulo.getGastos();
+		Integer tipoCliente = cliente.getTipoCliente();
+		if (tipoCliente == 2) {
+			return (pvp * cantidad) + (costeEnvio - costeEnvio * (cliente.descuentoEnv()/100));
+		}
+		return (pvp * cantidad) + costeEnvio;
 	}
 
-	public Pedido(int numeroPedido, int cantidadArticulos, Cliente cliente, Articulo articulo, int cantidad) {
-		this.numeroPedido = numeroPedido;
-		this.cantidadArticulos = cantidadArticulos;
+	public Pedido(int idPedido, Cliente cliente, Articulo articulo, int cantidad) {
+		this.idPedido = idPedido;
 		this.cliente = cliente;
 		this.articulo = articulo;
 		this.cantidad = cantidad;
-		this.fecha = fecha;
+		this.setFecha();
 	}
 
 	public int getNumeroPedido() {
-		return numeroPedido;
+		return idPedido;
 	}
 
-	public void setNumeroPedido(int numeroPedido) {
-		this.numeroPedido = numeroPedido;
-	}
-
-	public int getCantidadArticulos() {
-		return cantidadArticulos;
-	}
-
-	public void setCantidadArticulos(int cantidadArticulos) {
-		this.cantidadArticulos = cantidadArticulos;
+	public void setNumeroPedido(int idPedido) {
+		this.idPedido = idPedido;
 	}
 
 	public Cliente getCliente() {
@@ -68,19 +63,19 @@ public class Pedido {
 		this.cantidad = cantidad;
 	}
 
-	public Timestamp getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Timestamp fecha) {
-		this.fecha = fecha;
+	public void setFecha( ) {
+		Date date = new Date();
+		this.fecha = date;
 	}
 
 	@Override
 	public String toString() {
 		return "Pedido{" +
-				"numeroPedido=" + numeroPedido +
-				", cantidadArticulos=" + cantidadArticulos +
+				"idPedido=" + idPedido +
 				", cliente=" + cliente +
 				", articulo=" + articulo +
 				", cantidad=" + cantidad +

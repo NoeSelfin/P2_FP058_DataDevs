@@ -1,4 +1,5 @@
 package modelo;
+import java.util.UUID;
 
 public abstract class Cliente {
 	private String nombre;
@@ -7,7 +8,6 @@ public abstract class Cliente {
 	private String nif;
 
 	private Integer tipoCliente;
-
 
 	public abstract String tipoCliente();
 	public abstract float calcAnual();
@@ -20,6 +20,7 @@ public abstract class Cliente {
 		this.nif = nif;
 		this.tipoCliente = tipoCliente;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -50,6 +51,11 @@ public abstract class Cliente {
 	}
 	public void setTipoCliente(Integer tipoCliente) {
 		this.tipoCliente = tipoCliente;
+	}
+
+	private UUID generateId() {
+		UUID uuid = UUID.randomUUID();
+		return uuid;
 	}
 	@Override
 	public String toString() {

@@ -19,11 +19,25 @@ public class Datos {
 	}
 
 
-	public void addPedido(Integer numeroPedido, Integer cantidadArticulos, Cliente cliente, Articulo articulo, Integer cantidad) {
-		Pedido pedido = new Pedido(numeroPedido, cantidadArticulos, cliente, articulo, cantidad);
+	public void addPedido(Integer idPedido, Integer indexCliente, Integer indexArticulo, Integer cantidad) {
+		Articulo articulo = listaArticulos.getAt(indexArticulo);
+		Cliente cliente = listaClientes.getAt(indexCliente);
+		Pedido pedido = new Pedido(idPedido, cliente, articulo, cantidad);
 		listaPedidos.add(pedido);
 		System.out.println("***Pedido correctamente añadido!!***");
 		System.out.println(pedido.toString());
+		System.out.println("-----------------------------------");
+		System.out.println("PRECIO FINAL DEL PEDIDO: " + pedido.precioEnvio() + "€");
+		System.out.println("-----------------------------------");
+		System.out.println("Desglose de precio:");
+		System.out.println("Precio del Articulo:" + articulo.getPvp());
+		System.out.println("Unidades artículo:" + cantidad);
+		System.out.println("Gastos de envío del Articulo:" + articulo.getGastos());
+		System.out.println("Descuento aplicado:" + cliente.descuentoEnv() + "%");
+		System.out.println("-----------------------------------");
+
+
+
 	}
 
 	public void mostrarPedidos()
@@ -34,6 +48,8 @@ public class Datos {
 	{
 		listaPedidos.eliminarPedido (numeroPedido);
 		System.out.println("***Pedido correctamente eliminado!!***");
+
+		mostrarPedidos();
 	}
 
 

@@ -40,10 +40,10 @@ public class Controlador {
 		datos.mostrarClientesPremium();
 	}
 
-	public boolean addPedido(int numeroPedido, int cantidadArticulos, Cliente cliente, Articulo articulo, int cantidad)
+	public void addPedido(int idPedido, Integer indexCliente, Integer idArticulo, int cantidad)
 	{
-		datos.addPedido(numeroPedido, cantidadArticulos, cliente, articulo, cantidad);
-		return false;
+		datos.addPedido(idPedido, indexCliente, idArticulo, cantidad);
+
 	}
 
 	public void mostrarPedidos()

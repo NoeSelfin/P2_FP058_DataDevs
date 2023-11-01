@@ -5,7 +5,7 @@ public class ListaClientes extends Lista<Cliente>{
     public void printList(){
         System.out.println("******* LISTADO DE CLIENTES (ESTÁNDAR Y PREMIUM)  ********");
         for (Cliente cliente : this.lista) {
-            System.out.println(cliente);
+            System.out.println("Cliente con índice " + this.lista.indexOf(cliente) + ": "  + cliente);
         }
     }
 

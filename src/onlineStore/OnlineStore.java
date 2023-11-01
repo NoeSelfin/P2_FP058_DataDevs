@@ -5,15 +5,9 @@ import java.lang.*;
 
 import modelo.Articulo;
 import modelo.Cliente;
-import modelo.ClienteEstandard;
-import modelo.ClientePremium;
-import vista.GestionOS;
 
-import java.time.*;
 import java.util.*;
 import java.util.Scanner;
-
-import static sun.jvm.hotspot.runtime.BasicObjectLock.size;
 
 public class OnlineStore {
 
@@ -98,87 +92,65 @@ public class OnlineStore {
 	}
 	private void mostrarPedidosEnviados() {
 		// TODO Auto-generated method stub
-
 	}
 
 	private void mostrarPedidosPendientes() {
 		// TODO Auto-generated method stub
-
 	}
 
-	private void eliminarPedido() {
-		// TODO Auto-generated method stub
+	private void eliminarPedido() throws InputMismatchException {
 
+		try {
+			System.out.println("Ingresa el número de Id de Pedido que quieras eliminar.");
+			System.out.println("----------------------------------");
+			System.out.println("");
+			controlador.mostrarPedidos();
+			int idPedido = teclado.nextInt();
+
+			controlador.eliminarPedido(idPedido);
+		} catch (InputMismatchException e) {
+			System.out.println("Ha habido algún error en el tipo de dato introducido. Vuelve a intentarlo");
+			System.exit(0);
+		}
 	}
 
-	private void addPedido () {
+	private void addPedido() throws InputMismatchException {
 		// TODO Auto-generated method stub
-		int numClientes = 0;
-		int numArticulos = 0;
-		Cliente clientes = null;
-		Articulo articulos = null;
+		Integer indexCliente = 0;
+		int idArticulo = 0;
 		int unidades = 0;
+		try {
 		System.out.println("Numero de pedido: ");
 		int numPedido = Integer.parseInt(teclado.nextLine());
+
+
 		if (controlador.existePedido(numPedido)) {
 			System.out.println("Ya existe un pedido con ese codigo");
-			controlador.addPedido(numPedido, numArticulos, clientes, articulos, unidades);
 		} else {
-			System.out.println("Unidades: ");
-			int numArticulosPedido = Integer.parseInt(teclado.nextLine()) ;
-
-			unidades = numArticulosPedido;
-
-			do{
-				numArticulosPedido = Integer.parseInt(teclado.nextLine());
-				try{
-
-					if (numArticulosPedido < 0) {
-						throw new Exceptions("El numero de unidades no puede ser negativo");
-					} else if (numArticulosPedido > 10) {
-						throw new Exceptions("El numero de unidades no puede ser mayor de 10");
-					} else {
-						System.out.println("El numero de unidades ha sido aceptado");
-						unidades = numArticulosPedido;}
-
-				} catch (Exceptions e) {
-					System.out.println("Ha ocurrido un error: ");
-				}
-
-            } while(unidades);
-
 			System.out.println("Escoge el cliente del pedido.");
+			System.out.println("----------------------------------");
 			System.out.println("");
-			// Aqui llamaremos al controlador para que nos devuelva la lista de clientes y
-			// listarlos
-			for (int i = 0; i < controlador.datos.mostrarClientes(); i++) {
-				System.out.println(i + 1 + ". " + controlador.datos.mostrarClientes() + "\n");
-				numClientes += String.valueOf(i + 1) + ",";
-			}
-
+			controlador.mostrarClientes();
 			System.out.println("");
-			do {
-				System.out.println("Elige una opci�n (" + numClientes + "): ");
-				clientes = teclado.nextLine();
-			} while (!numClientes.contains(clientes));
+			System.out.println("Elige una opcion, ingresa el índice del cliente: ");
+			indexCliente = teclado.nextInt();
 
 			System.out.println("Escoge el articulo del pedido.");
 			System.out.println("----------------------------------");
-			// Aqui llamaremos al controlador para que nos devuelva la lista de clientes y
-			// listarlos
-			for (int i = 0; i < controlador.datos.mostrarArticulos(); i++) {
-				System.out.println(i + 1 + ". " + controlador.datos.getArticulos().getDato().get(i).getDescripcion() + "\n");
-				numArticulos += String.valueOf(i + 1) + ",";
-			}
-
+			controlador.mostrarArticulos();
 			System.out.println("----------------------------------");
-			do {
-				System.out.println("Elige una opci�n (" + numArticulos.substring(1) + "): ");
-				articulos = teclado.nextLine();
-			} while (!numArticulos.contains(clientes));
-
-			System.out.println(controlador.addPedido(numPedido, numArticulos, clientes, articulos, unidades));
-
+			System.out.println("Elige una opcion, ingresa el índice del articulo: ");
+			idArticulo = teclado.nextInt();
+			System.out.println("Ingresa el número de unidades del artículo: ");
+			unidades = teclado.nextInt();
+			System.out.println(numPedido);
+			System.out.println(idArticulo);
+			System.out.println(unidades);
+			controlador.addPedido(numPedido, indexCliente, idArticulo, unidades);
+		}
+		} catch (InputMismatchException e) {
+			System.out.println("Ha habido algún error en el tipo de dato introducido. Vuelve a intentarlo");
+			System.exit(0);
 		}
 	}
 
@@ -199,10 +171,7 @@ public class OnlineStore {
 		controlador.mostrarClientes();
 	}
 
-
-
-
-	private void addCliente()  throws InputMismatchException {
+	private void addCliente() throws InputMismatchException {
 		try {
 			System.out.println("Nombre del cliente: ");
 			String nombre = teclado.next();
@@ -228,7 +197,6 @@ public class OnlineStore {
 
 	private void mostrarArticulos() {
 		controlador.mostrarArticulos();
-
 	}
 
 	private void addArticulo() throws InputMismatchException {

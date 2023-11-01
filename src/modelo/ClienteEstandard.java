@@ -14,16 +14,16 @@ public class ClienteEstandard extends Cliente{
 
 	@Override
 	public float calcAnual() {
-		return 30;
+		return 0;
 	}
 
 	@Override
 	public float descuentoEnv() {
-		return 25;
+		return 0;
 	}
 
 	@Override
 	public String toString() {
-		return "ClienteEstandard{} " + super.toString()+ ", coste="+ calcAnual()+ ", descuento=" + descuentoEnv();
+		return "ClienteEstandard{} " + super.toString()+ ", cuota anual="+ calcAnual()+ ", descuento gastos envío=" + descuentoEnv();
 	}
 }

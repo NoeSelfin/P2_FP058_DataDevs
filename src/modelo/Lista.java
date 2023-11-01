@@ -22,7 +22,7 @@ public class Lista<T> {
 		lista.add(t);
 	}
 	public T getAt(int position) {
-		return null;
+		return this.lista.get(position);
 		//código
 	}
 	public void clear() {
