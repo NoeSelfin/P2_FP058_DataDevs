@@ -99,12 +99,12 @@ public class OnlineStore {
 	private void eliminarPedido() throws InputMismatchException {
 
 		try {
-			System.out.println("Ingresa el número de Id de Pedido que quieras eliminar.");
+			System.out.println(" Eliminar pedido ");
 			System.out.println("----------------------------------");
 			System.out.println("");
 			controlador.mostrarPedidos();
+			System.out.println("Ingresa el NÚMERO de ID de Pedido que quieras eliminar.");
 			int idPedido = teclado.nextInt();
-
 			controlador.eliminarPedido(idPedido);
 		} catch (InputMismatchException e) {
 			System.out.println("Ha habido algún error en el tipo de dato introducido. Vuelve a intentarlo");

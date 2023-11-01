@@ -47,7 +47,6 @@ public class Datos {
 	public void eliminarPedido(int numeroPedido)
 	{
 		listaPedidos.eliminarPedido (numeroPedido);
-		System.out.println("***Pedido correctamente eliminado!!***");
 
 		mostrarPedidos();
 	}

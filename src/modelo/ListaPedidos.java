@@ -33,7 +33,7 @@ public class ListaPedidos extends Lista<Pedido> {
 	public void printList() {
 		System.out.println("******* PEDIDOS  ********");
 		for (Pedido pedido : this.lista) {
-			System.out.println(this.lista.indexOf(pedido)+1 + ": " + pedido);
+ 			System.out.println("Pedido con id " + pedido.getNumeroPedido() + ": " + pedido);
 		}
 		System.out.println();
 	}
@@ -44,14 +44,18 @@ public class ListaPedidos extends Lista<Pedido> {
 	}
 
 	public void eliminarPedido(int numeroPedido) {
+		Boolean found = false;
 		for (Pedido pedido : this.lista) {
 			if (pedido.getNumeroPedido() == numeroPedido) {
+				found = true;
 				this.lista.remove(pedido);
-				System.out.println("Pedido eliminado correctamente");
+				System.out.println("***Pedido correctamente eliminado!!***");
 				return;
 			}
 		}
-		System.out.println("No se ha encontrado el pedido");
+		if (found == false) {
+			System.out.println("No se ha encontrado el pedido");
+		}
 	}
 
 
