@@ -2,6 +2,9 @@ package controlador;
 
 import modelo.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Controlador {
 	public Datos datos;
 
@@ -15,9 +18,9 @@ public class Controlador {
 		datos.addArticulo(codigo, descripcion, precio, gastos, preparacion);
 	}
 
-	public void mostrarArticulos()
+	public ArrayList mostrarArticulos()
 	{
-		datos.mostrarArticulos();
+		return datos.mostrarArticulos();
 	}
 
 	public void addCliente(String nombre, String domicilio, String email, String nif, String tipoCliente)

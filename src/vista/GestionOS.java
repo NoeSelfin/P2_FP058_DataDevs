@@ -1,7 +1,9 @@
 package vista;
 
 import controlador.Controlador;
+import modelo.Articulo;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -211,7 +213,12 @@ public class GestionOS {
     }
 
     private void mostrarArticulos() {
-        controlador.mostrarArticulos();
+        // Que retorne el array de Articulos
+        ArrayList lista = controlador.mostrarArticulos();
+        System.out.println("******* LISTADO DE ARTÍCULOS  ********");
+        for (Object articulo : lista) {
+            System.out.println(lista.indexOf(articulo)+1 + ": " + articulo);
+         }
     }
 
     private void addArticulo() throws InputMismatchException {
